@@ -54,12 +54,12 @@ public static class SceneNameScriptCreator
         var contents = EditorBuildSettings.scenes
             .Select( scene => Path.GetFileNameWithoutExtension( scene.path ) )
             .Distinct()
-            .Aggregate( String.Empty, ( concated, scene_name ) => 
+            .Aggregate( String.Empty, ( concatenated, scene_name ) => 
             {
                 var adding_format_string    = @"    public const string {0} = ""{1}"";{2}";
                 var constant_name           = ToSnakeCaseFromUpperCamelCase( scene_name );
 
-                return concated + String.Format( 
+                return concatenated + String.Format( 
                     adding_format_string, 
                     constant_name, 
                     scene_name, 
